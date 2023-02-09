@@ -18,14 +18,30 @@ env:
   TEST_SUITE: "CheckedC_clang"
 
 jobs:
+  # Cleanup files left behind by prior runs
+  clean:
+    name: Clean
+    runs-on: self-hosted
+    steps:
+      - name: Clean
+        run: |
+          rm -rf ${{env.builddir}}
+          mkdir -p ${{env.builddir}}
+          rm -rf ${{env.BUILD_BINARIESDIRECTORY}}
+          mkdir -p ${{env.BUILD_BINARIESDIRECTORY}}
+          rm -rf ${{env.BUILD_SOURCESDIRECTORY}}
+          mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
+
   build:
+    name: Build Checked C Clang
+    needs: clean
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Checked C Clang code
         uses: actions/checkout@v2
-
-      - name: Run shell script
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
         run: |
-         cd ${pwd}
-         echo "Current working directory: ${pwd}"
+         cd ${{env.BUILD_SOURCESDIRECTORY}}
          sh ./clang/automation/UNIX/setup-and-test.sh
