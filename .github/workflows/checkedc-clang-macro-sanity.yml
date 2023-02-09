@@ -32,7 +32,7 @@ jobs:
           rm -rf ${{env.BUILD_SOURCESDIRECTORY}}
           mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
 
-  test CheckedC Clang  UNIX:
+  test_CheckedC_Clang_UNIX:
     name: Build and test Checked C Clang on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
-  test CheckedC Clang and LLVM UNIX:
+  test_CheckedC_Clang_and_LLVM_UNIX:
     name: Build and test Checked C Clang and LLVM on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -62,7 +62,7 @@ jobs:
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
-  test CheckedC tests UNIX:
+  test_CheckedC_tests_UNIX:
     name: Build Checked C clang and test only checkedc tests on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -77,7 +77,7 @@ jobs:
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
-  test CheckedC Clang on windows :
+  test_CheckedC_Clang_on_windows :
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
@@ -92,7 +92,7 @@ jobs:
          chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          cmd.exe /c 'build-and-test.bat'
 
-  test CheckedC Clang and LLVM Windows:
+  test_CheckedC_Clang_and_LLVM_Windows:
     name: Build and test Checked C Clang and LLVM on windows
     needs: clean
     runs-on: windows-latest
@@ -107,7 +107,7 @@ jobs:
           chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
           cmd.exe /c 'build-and-test.bat'
 
-  test CheckedC tests Windows:
+  test_CheckedC_tests_Windows:
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
