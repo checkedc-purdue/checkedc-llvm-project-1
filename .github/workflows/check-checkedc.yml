@@ -56,5 +56,5 @@ jobs:
       - name: Run setup-and-test.sh script
         run: |
           echo "export MY_ENV_VAR="CheckedC-tests"" >> $GITHUB_ENV
-          chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
-          cmd.exe /c 'build-and-test.bat'
+          chdir ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\UNIX
+          build-and-test.bat
