@@ -15,7 +15,6 @@ env:
   BUILD_BINARIESDIRECTORY: "${{github.workspace}}/b"
   BUILD_SOURCESDIRECTORY: "${{github.workspace}}"
   TEST_TARGET_ARCH: "X86_64"
-  TEST_SUITE: "CheckedC_clang"
   RUN_LOCAL:  "no"
 jobs:
   # Cleanup files left behind by prior runs
@@ -32,8 +31,39 @@ jobs:
           rm -rf ${{env.BUILD_SOURCESDIRECTORY}}
           mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
 
-  build:
+  test Clang checkedc:
+    TEST_SUITE: "CheckedC_clang"
     name: Build Checked C Clang
+    needs: clean
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Checked C Clang code
+        uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
+        run: |
+         cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+         ./build-and-test.sh
+
+  test Clang ALL:
+    TEST_SUITE: "CheckedC_LLVM"
+    name: Build Checked C Clang
+    needs: clean
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Checked C Clang code
+        uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
+        run: |
+         cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+         ./build-and-test.sh
+
+  test CheckedC tests:
+    TEST_SUITE: "CheckedC-tests"
+    name: Build Checked C tests
     needs: clean
     runs-on: ubuntu-latest
     steps:
