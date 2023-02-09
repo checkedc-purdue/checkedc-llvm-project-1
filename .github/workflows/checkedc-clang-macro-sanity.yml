@@ -27,4 +27,5 @@ jobs:
       - name: Run shell script
         run: |
          cd ${pwd}
+         echo "Current working directory: ${pwd}"
          sh ./clang/automation/UNIX/setup-and-test.sh
