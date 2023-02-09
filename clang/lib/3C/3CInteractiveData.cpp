@@ -46,6 +46,7 @@ float ConstraintsInfo::getAtomAffectedScore(const CVars &AllKeys) {
   return TS;
 }
 
+
 float ConstraintsInfo::getPtrAffectedScore(
     const std::set<ConstraintVariable *> CVs) {
   float TS = 0.0;
