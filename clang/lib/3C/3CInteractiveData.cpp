@@ -12,6 +12,7 @@
 
 #include "clang/3C/3CInteractiveData.h"
 #include "llvm/Support/JSON.h"
+
 void ConstraintsInfo::clear() {
   RootWildAtomsWithReason.clear();
   AtomSourceMap.clear();
