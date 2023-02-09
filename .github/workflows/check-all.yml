@@ -60,6 +60,7 @@ jobs:
       - name: Run setup-and-test.sh script
         env:
           TEST_SUITE: "CheckedC_LLVM"
+          TEST_TARGET_ARCH: "X86"
         shell: cmd
         run: |
           cd ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\Windows

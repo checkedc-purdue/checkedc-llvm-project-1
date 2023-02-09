@@ -57,6 +57,7 @@ jobs:
       - name: Run setup-and-test.sh script
         env:
           TEST_SUITE: "CheckedC_tests"
+          TEST_TARGET_ARCH: "X86"
         run: |
-          chdir ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\Windows
+          cd ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\Windows
           build-and-test.bat
