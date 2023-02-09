@@ -33,7 +33,6 @@ jobs:
           mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
 
   test Clang checkedc [UNIX]:
-    run: echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV
     name: Build and test Checked C Clang on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -44,11 +43,11 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+         echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
   test Clang ALL [UNIX]:
-    run: echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
     name: Build and test Checked C Clang and LLVM on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -59,11 +58,11 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+         echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
   test CheckedC tests [UNIX]:
-    run: echo "export MY_ENV_VAR="CheckedC_tests"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -74,11 +73,11 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+         echo "export MY_ENV_VAR="CheckedC_tests"" >> $GITHUB_ENV
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
   test CheckedC on windows  [Windows]:
-    run: echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
@@ -89,11 +88,11 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+         echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV 
          chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          cmd.exe /c 'build-and-test.bat'
 
   test Clang ALL [Windows]:
-    run: echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
     name: Build and test Checked C Clang and LLVM on windows
     needs: clean
     runs-on: windows-latest
@@ -104,11 +103,11 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+          echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
           chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
           cmd.exe /c 'build-and-test.bat'
 
   test CheckedC tests [Windows]:
-    run: echo "export MY_ENV_VAR="CheckedC-tests"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
@@ -119,5 +118,6 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
+          echo "export MY_ENV_VAR="CheckedC-tests"" >> $GITHUB_ENV
           chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
           cmd.exe /c 'build-and-test.bat'
