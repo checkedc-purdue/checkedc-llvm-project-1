@@ -93,6 +93,7 @@ void ConstraintsInfo::printStats(llvm::raw_ostream &O) {
   O << "}}";
 }
 
+
 void ConstraintsInfo::printRootCauseStats(llvm::raw_ostream &O,
                                           Constraints &CS) {
   O << "{\"RootCauseStats\":[";
