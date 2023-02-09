@@ -58,6 +58,5 @@ jobs:
         env:
           TEST_SUITE: "CheckedC_tests"
         run: |
-          chdir ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\UNIX
-          dir
+          chdir ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\Windows
           build-and-test.bat

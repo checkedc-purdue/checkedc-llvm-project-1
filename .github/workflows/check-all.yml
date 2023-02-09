@@ -62,6 +62,5 @@ jobs:
           TEST_SUITE: "CheckedC_LLVM"
         shell: cmd
         run: |
-          cd ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\UNIX
-          dir
+          cd ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\Windows
           build-and-test.bat
