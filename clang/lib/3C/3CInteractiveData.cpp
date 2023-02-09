@@ -105,7 +105,6 @@ void ConstraintsInfo::printRootCauseStats(llvm::raw_ostream &O,
   }
   O << "]}";
 }
-
 void ConstraintsInfo::printConstraintStats(llvm::raw_ostream &O,
                                            Constraints &CS,
                                            ConstraintKey Cause) {
