@@ -1,4 +1,4 @@
-name: Checked C Clang Macro Sanity Tests
+name: Checked C Clang CI [TARGET check-clang]
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Checked C Clang Macro Sanity Tests
+name: Checked C Clang and LLVM CI [TARGET check-all]
 
 on:
   push:
