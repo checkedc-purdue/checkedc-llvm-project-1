@@ -21,7 +21,7 @@ jobs:
   # Cleanup files left behind by prior runs
   clean:
     name: Clean
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Clean
         run: |
