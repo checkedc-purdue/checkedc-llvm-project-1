@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -31,4 +33,4 @@ jobs:
 
       - name: Run shell script
         uses: actions/checkout@v2
-        run: sh ./clang/automation/UNIX/setup-and-test.sh
+        run: sh .${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/setup-and-test.sh
