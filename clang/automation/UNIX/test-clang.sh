@@ -14,7 +14,7 @@ if [ "${TEST_SUITE}" == "CheckedC_clang" ]; then
   make -j${BUILD_CPU_COUNT} check-clang
 elif [ "${TEST_SUITE}" == "CheckedC_LLVM" ]; then
   make -j${BUILD_CPU_COUNT} check-all
-elif ["${TEST_SUITE}" == "CheckedC-tests" ]; then
+elif ["${TEST_SUITE}" == "CheckedC_tests" ]; then
   make -j${BUILD_CPU_COUNT} check-checkedc
 fi
 

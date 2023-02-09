@@ -16,6 +16,7 @@ env:
   BUILD_SOURCESDIRECTORY: "${{github.workspace}}"
   TEST_TARGET_ARCH: "X86_64"
   RUN_LOCAL:  "no"
+  TEST_SUITE: "CheckedC_clang"
 jobs:
   # Cleanup files left behind by prior runs
   clean:
@@ -32,7 +33,7 @@ jobs:
           mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
 
   test Clang checkedc [UNIX]:
-    TEST_SUITE: "CheckedC_clang"
+    run: echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV
     name: Build and test Checked C Clang on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -47,7 +48,7 @@ jobs:
          ./build-and-test.sh
 
   test Clang ALL [UNIX]:
-    TEST_SUITE: "CheckedC_LLVM"
+    run: echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
     name: Build and test Checked C Clang and LLVM on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -62,7 +63,7 @@ jobs:
          ./build-and-test.sh
 
   test CheckedC tests [UNIX]:
-    TEST_SUITE: "CheckedC-tests"
+    run: echo "export MY_ENV_VAR="CheckedC_tests"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on UNIX
     needs: clean
     runs-on: ubuntu-latest
@@ -77,7 +78,7 @@ jobs:
          ./build-and-test.sh
 
   test CheckedC on windows  [Windows]:
-    TEST_SUITE: "CheckedC_clang"
+    run: echo "export MY_ENV_VAR="CheckedC_clang"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
@@ -92,7 +93,7 @@ jobs:
          cmd.exe /c 'build-and-test.bat'
 
   test Clang ALL [Windows]:
-    TEST_SUITE: "CheckedC_LLVM"
+    run: echo "export MY_ENV_VAR="CheckedC_LLVM"" >> $GITHUB_ENV
     name: Build and test Checked C Clang and LLVM on windows
     needs: clean
     runs-on: windows-latest
@@ -107,7 +108,7 @@ jobs:
           cmd.exe /c 'build-and-test.bat'
 
   test CheckedC tests [Windows]:
-    TEST_SUITE: "CheckedC-tests"
+    run: echo "export MY_ENV_VAR="CheckedC-tests"" >> $GITHUB_ENV
     name: Build Checked C clang and test only checkedc tests on windows
     needs: clean
     runs-on: windows-latest
