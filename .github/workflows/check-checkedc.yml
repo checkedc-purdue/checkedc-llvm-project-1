@@ -39,8 +39,9 @@ jobs:
         with:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
+        env:
+          TEST_SUITE: "CheckedC_tests"
         run: |
-         echo "export MY_ENV_VAR="CheckedC_tests"" >> $GITHUB_ENV
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
@@ -54,7 +55,9 @@ jobs:
         with:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
+        env:
+          TEST_SUITE: "CheckedC_tests"
         run: |
-          echo "export MY_ENV_VAR="CheckedC-tests"" >> $GITHUB_ENV
           chdir ${{env.BUILD_SOURCESDIRECTORY}}\clang\automation\UNIX
+          dir
           build-and-test.bat
