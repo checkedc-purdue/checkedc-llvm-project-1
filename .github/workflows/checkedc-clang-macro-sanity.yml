@@ -26,10 +26,7 @@ jobs:
         with:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
       - name: Run shell script
-        run: sh .${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/setup-and-test.sh
+        run: |
+         cd ${pwd}
+         sh ./clang/automation/UNIX/setup-and-test.sh
