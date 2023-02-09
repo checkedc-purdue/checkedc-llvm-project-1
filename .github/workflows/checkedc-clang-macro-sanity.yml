@@ -16,7 +16,7 @@ env:
   BUILD_SOURCESDIRECTORY: "${{github.workspace}}"
   TEST_TARGET_ARCH: "x86_64"
   TEST_SUITE: "CheckedC_clang"
-
+  RUN_LOCAL:  "no"
 jobs:
   # Cleanup files left behind by prior runs
   clean:
