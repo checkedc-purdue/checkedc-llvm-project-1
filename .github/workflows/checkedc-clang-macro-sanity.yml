@@ -31,9 +31,9 @@ jobs:
           rm -rf ${{env.BUILD_SOURCESDIRECTORY}}
           mkdir -p ${{env.BUILD_SOURCESDIRECTORY}}
 
-  test Clang checkedc:
+  test Clang checkedc [UNIX]:
     TEST_SUITE: "CheckedC_clang"
-    name: Build Checked C Clang
+    name: Build and test Checked C Clang on UNIX
     needs: clean
     runs-on: ubuntu-latest
     steps:
@@ -46,9 +46,9 @@ jobs:
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
-  test Clang ALL:
+  test Clang ALL [UNIX]:
     TEST_SUITE: "CheckedC_LLVM"
-    name: Build Checked C Clang
+    name: Build and test Checked C Clang and LLVM on UNIX
     needs: clean
     runs-on: ubuntu-latest
     steps:
@@ -61,9 +61,9 @@ jobs:
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
 
-  test CheckedC tests:
+  test CheckedC tests [UNIX]:
     TEST_SUITE: "CheckedC-tests"
-    name: Build Checked C tests
+    name: Build Checked C clang and test only checkedc tests on UNIX
     needs: clean
     runs-on: ubuntu-latest
     steps:
@@ -75,3 +75,48 @@ jobs:
         run: |
          cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
          ./build-and-test.sh
+
+  test CheckedC on windows  [Windows]:
+    TEST_SUITE: "CheckedC_clang"
+    name: Build Checked C clang and test only checkedc tests on windows
+    needs: clean
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Checked C Clang code
+        uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
+        run: |
+         chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+         cmd.exe /c 'build-and-test.bat'
+
+  test Clang ALL [Windows]:
+    TEST_SUITE: "CheckedC_LLVM"
+    name: Build and test Checked C Clang and LLVM on windows
+    needs: clean
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Checked C Clang code
+        uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
+        run: |
+          chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+          cmd.exe /c 'build-and-test.bat'
+
+  test CheckedC tests [Windows]:
+    TEST_SUITE: "CheckedC-tests"
+    name: Build Checked C clang and test only checkedc tests on windows
+    needs: clean
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Checked C Clang code
+        uses: actions/checkout@v2
+        with:
+          path: ${{env.BUILD_SOURCESDIRECTORY}}
+      - name: Run setup-and-test.sh script
+        run: |
+          chdir ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+          cmd.exe /c 'build-and-test.bat'
