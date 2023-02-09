@@ -43,5 +43,5 @@ jobs:
           path: ${{env.BUILD_SOURCESDIRECTORY}}
       - name: Run setup-and-test.sh script
         run: |
-         cd ${{env.BUILD_SOURCESDIRECTORY}}
-         ./clang/automation/UNIX/build-and-test.sh
+         cd ${{env.BUILD_SOURCESDIRECTORY}}/clang/automation/UNIX/
+         ./build-and-test.sh
