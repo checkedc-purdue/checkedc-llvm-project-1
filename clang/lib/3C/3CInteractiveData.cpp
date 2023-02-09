@@ -29,7 +29,6 @@ CVars &ConstraintsInfo::getSrcCVars(ConstraintKey Ckey) {
   return SrcWMap[Ckey];
 }
 
-
 CVars ConstraintsInfo::getWildAffectedCKeys(const CVars &DWKeys) {
   CVars IndirectWKeys;
   for (auto CK : DWKeys) {
