@@ -9,6 +9,7 @@
 // Data structure methods
 //
 //===----------------------------------------------------------------------===//
+
 #include "clang/3C/3CInteractiveData.h"
 #include "llvm/Support/JSON.h"
 
